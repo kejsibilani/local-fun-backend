@@ -1,13 +1,14 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+require('dotenv').config();
+
 
 const app = express();
 app.use(cors());
 
 // Connect to MongoDB
-mongoose.connect('mongodb://127.0.0.1:27017/localfun', {
-  useNewUrlParser: true,
+mongoose.connect(`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@${process.env.MONGO_CLUSTER}/${process.env.MONGO_DB}`, {
   useUnifiedTopology: true, // Add this option for avoiding deprecation warning
 });
 const db = mongoose.connection;
