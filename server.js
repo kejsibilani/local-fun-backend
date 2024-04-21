@@ -5,7 +5,9 @@ require('dotenv').config();
 
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: 'https://local-fun-backend.onrender.com/'
+}));
 
 // Connect to MongoDB
 mongoose.connect(`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@${process.env.MONGO_CLUSTER}/${process.env.MONGO_DB}`, {
